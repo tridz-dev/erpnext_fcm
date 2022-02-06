@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include fcm_notification *.css
+recursive-include fcm_notification *.csv
+recursive-include fcm_notification *.html
+recursive-include fcm_notification *.ico
+recursive-include fcm_notification *.js
+recursive-include fcm_notification *.json
+recursive-include fcm_notification *.md
+recursive-include fcm_notification *.png
+recursive-include fcm_notification *.py
+recursive-include fcm_notification *.svg
+recursive-include fcm_notification *.txt
+recursive-exclude fcm_notification *.pyc
