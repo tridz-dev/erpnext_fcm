@@ -1,4 +1,4 @@
-## Fcm Notification
+## FCM Notification
 
 Sends Frappe notifications to devices via Firebase Cloud Message
 
