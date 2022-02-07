@@ -12,11 +12,13 @@ Send notifications created in Frappe or ERPNext as push notication via Firebase 
   iv. Script: `frappe.call("fcm_notification.send_notification.send_notification", doc=doc)`<br />
 To learn more about server scripts [see this link.](https://frappeframework.com/docs/v13/user/en/desk/scripting/server-script) 
 
-2. Add your server key in FCM Notification Settings.
+2. Add your FCM server key in FCM Notification Settings.[see this documentation to get your key.](https://intercom.help/push-monkey/en/articles/1649592-how-to-set-up-your-fcm-keys-previously-called-gcm)
 
-3. Optionally create a notification in Frappe/ERPNext. [(Refer)](https://docs.erpnext.com/docs/v12/user/manual/en/setting-up/notifications)
+3. Link your device id to each user using the **User Device** DocType.
 
-4. Run an event that triggers any notification. The notifcation will be send the respetive user via FCM if they have subscribed to it.
+4. Optionally create a notification in Frappe/ERPNext. [(Refer)](https://docs.erpnext.com/docs/v12/user/manual/en/setting-up/notifications)
+
+5. Run an event that triggers any notification. The notifcation will be send the respetive user via FCM if they have subscribed to it.
 
 
 ## Supporting Organization
