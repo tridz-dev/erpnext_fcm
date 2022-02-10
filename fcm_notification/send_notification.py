@@ -2,6 +2,7 @@ import frappe
 import requests
 import json
 from frappe import enqueue
+import re
 
 def user_id(doc):
     user_email = doc.for_user
@@ -16,13 +17,23 @@ def send_notification(doc):
         enqueue(process_notification, queue="default", now=False,\
                          device_id=device_id, notification=doc)
 
+def convert_message(message, title):
+    CLEANR = re.compile('<.*?>')
+    cleanmessage = re.sub(CLEANR, "",message)
+    cleantitle = re.sub(CLEANR, "",title)
+    return cleanmessage, cleantitle
+
 def process_notification(device_id, notification):
+    message = notification.email_content
+    title = notification.subject
+    message , title = convert_message(message, title)
+
     url = "https://fcm.googleapis.com/fcm/send"
     body = {
         "to": device_id.device_id,
         "notification": {
-            "body": notification.email_content,
-            "title": notification.subject
+            "body": message,
+            "title": title
         }
     }
 
