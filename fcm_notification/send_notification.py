@@ -35,8 +35,10 @@ def process_notification(device_id, notification):
             "body": message,
             "title": title
         },
-        "doctype": notification.document_type,
-        "docname": notification.document_name
+        "data": {
+            "doctype": notification.document_type,
+            "docname": notification.document_name
+        }
     }
 
     server_key = frappe.db.get_single_value('FCM Notification Settings', 'server_key')
