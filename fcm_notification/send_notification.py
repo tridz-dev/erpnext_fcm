@@ -26,7 +26,8 @@ def convert_message(message, title):
 def process_notification(device_id, notification):
     message = notification.email_content
     title = notification.subject
-    message , title = convert_message(message, title)
+    if message and title:
+        message , title = convert_message(message, title)
 
     url = "https://fcm.googleapis.com/fcm/send"
     body = {
