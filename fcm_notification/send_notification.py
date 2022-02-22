@@ -17,17 +17,19 @@ def send_notification(doc):
         enqueue(process_notification, queue="default", now=False,\
                          device_id=device_id, notification=doc)
 
-def convert_message(message, title):
+def convert_message(message):
     CLEANR = re.compile('<.*?>')
     cleanmessage = re.sub(CLEANR, "",message)
-    cleantitle = re.sub(CLEANR, "",title)
-    return cleanmessage, cleantitle
+    # cleantitle = re.sub(CLEANR, "",title)
+    return cleanmessage
 
 def process_notification(device_id, notification):
     message = notification.email_content
     title = notification.subject
-    if message and title:
-        message , title = convert_message(message, title)
+    if message:
+        message = convert_message(message)
+    if title:
+        title = convert_message(title)
 
     url = "https://fcm.googleapis.com/fcm/send"
     body = {
